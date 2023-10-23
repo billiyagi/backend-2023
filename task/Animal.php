@@ -206,6 +206,58 @@ $animalAfterUpdates = $animalClass->index();
         </div>
 
 
+        <!-- Animal after updated data -->
+        <div id="afterUpdate" class="my-5">
+            <p class="bg-light p-3 border-start border-4 border-danger">Menampilkan semua data animal setelah data di update dengan menambahkan data ayam</p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nama</th>
+                        <th>Warna</th>
+                        <th>Usia</th>
+                        <th>Deskripsi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($animalAfterUpdates as $animalAfterUpdate) : ?>
+                        <tr>
+                            <td><?php echo $animalAfterUpdate['name']; ?></td>
+                            <td><?php echo $animalAfterUpdate['color']; ?></td>
+                            <td><?php echo $animalAfterUpdate['age']; ?></td>
+                            <td><?php echo $animalAfterUpdate['description']; ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+
+
+        <!-- Animal after deleted data -->
+        <div id="afterUpdate" class="my-5">
+            <p class="bg-light p-3 border-start border-4 border-danger">Menampilkan semua data animal setelah data di update dengan menambahkan data ayam</p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nama</th>
+                        <th>Warna</th>
+                        <th>Usia</th>
+                        <th>Deskripsi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($animalAfterUpdates as $animalAfterUpdate) : ?>
+                        <tr>
+                            <td><?php echo $animalAfterUpdate['name']; ?></td>
+                            <td><?php echo $animalAfterUpdate['color']; ?></td>
+                            <td><?php echo $animalAfterUpdate['age']; ?></td>
+                            <td><?php echo $animalAfterUpdate['description']; ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+
+
 
 
     </div>
