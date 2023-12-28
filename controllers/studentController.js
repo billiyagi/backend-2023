@@ -1,32 +1,73 @@
 const studentData = require('../data/student');
+const Student = require('../models/Student');
 
 class StudentController {
-    index(req, res) {
+
+    /** 
+     * Mengambil semua data students
+    */
+    async index(req, res) {
+        // get all students
+        const students = await Student.all();
+
         const student = {
             message: 'Menampilkan semua students',
-            data: studentData
+            data: students
         }
         return res.json(student);
     }
 
-    store(req, res) {
-        // console.log(req.body, 'wkwkw');
-        const { name, age, address } = req.body;
+    /** 
+     * Menyimpan data student baru
+    */
+    async store(req, res) {
+        const studentModel = new Student();
+        const students = await studentModel.save(req.body);
         return res.json({
-            message: `Membuat student baru, data: ${name}, usia: ${age} dan alamat: ${address}`
+            message: `Berhasil membuat student baru`,
+            data: students
         });
     }
 
-    show(req, res) {
-        return res.send(`Menampilkan student dengan id ${req.params.id}`);
+    /** 
+     * Menampilkan data student by id
+    */
+    async show(req, res) {
+        const userId = req.params.id;
+        const student = await Student.find(userId);
+        return res.json({
+            message: `Menampilkan student dengan id ${req.params.id}`,
+            data: student
+        });
     }
 
-    update(req, res) {
-        return res.send(`Mengupdate student dengan id ${req.params.id}`);
+    /** 
+     * Mengubah data student by id
+    */
+    async update(req, res) {
+        const studentModel = new Student();
+        const userId = req.params.id;
+        const result = await studentModel.update(userId, req.body);
+
+
+        return res.json({
+            message: `Mengupdate student dengan id ${req.params.id}`,
+            data: result
+        });
     }
 
-    destroy(req, res) {
-        return res.send(`Menghapus student dengan id ${req.params.id}`);
+    /** 
+     * Menghapus data student by id
+    */
+    async destroy(req, res) {
+        const userId = req.params.id;
+        const studentModel = new Student();
+        const result = await studentModel.delete(userId);
+
+        return res.json({
+            message: `Menghapus student dengan id ${req.params.id}`,
+            data: result
+        });
     }
 }
 
